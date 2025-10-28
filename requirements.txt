@@ -1,0 +1,7 @@
+flask
+timezonefinder
+requests
+reverse-geocode
+geocoder
+python-dotenv
+pycountry
