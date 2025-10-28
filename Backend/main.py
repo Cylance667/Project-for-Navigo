@@ -1,5 +1,4 @@
 from timezonefinder import TimezoneFinder #Timezone library
-import requests
 import reverse_geocoder as rg
 from dotenv import load_dotenv
 import os
