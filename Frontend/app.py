@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
+
 import sys
 import os
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Backend')))
 
 import main as backend
@@ -22,12 +22,13 @@ def process_pin():
         # Initialize and run backend services
         backend.initialize()
         timezone = backend.lat_long_to_timezone(lat, lon)
-        weather = backend.get_weather_for_location(lat, lon, "Celsius")
+        news = backend.get_news_with_perplexity(lat, lon)
+        weather = backend.get_weather_for_location(lat, lon, "Fahrenheit")
 
         # Merge results into one dictionary for JSON response
         result = {
             "timezone": timezone,
-            # "news": news, ...Uncomment when news functionality is added
+            "news": news,
             "weather": weather
         }
 

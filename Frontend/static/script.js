@@ -23,16 +23,9 @@ window.addEventListener("DOMContentLoaded", () => {
       <p>${weather.description}, ${weather.temperature} °${weather.unit}</p>
 
       <h4>News</h4>
-      <ul>
-        In Development
-      </ul>
+        ${news.map(item => `<a href="${item.url}" style="color: cyan;">${item.title}</a><br>`).join('')}
     `;
   }
-
-  // <h4>News</h4>
-  //     <ul>
-  //       ${(news && Array.isArray(news)) ? news.map(item => `<li>${item}</li>`).join('') : "<li>No recent news.</li>"}
-  //     </ul>
 
   //Functions to show/hide loading overlay
   function showLoading() {

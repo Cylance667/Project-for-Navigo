@@ -89,7 +89,7 @@ canvas {
   top: 0;
   right: 0;
   height: 100vh;
-  width: 300px;
+  width: 600px;
   background-color: #1a1a1a;
   color: #fff;
   padding: 20px;
@@ -116,5 +116,5 @@ canvas {
 }
 
 .hidden {
-  transform: translateX(320px);
+  transform: translateX(620px);
 }

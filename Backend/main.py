@@ -1,4 +1,4 @@
-from timezonefinder import TimezoneFinder
+from timezonefinder import TimezoneFinder #Timezone library
 import requests
 import reverse_geocoder as rg
 from dotenv import load_dotenv
@@ -12,15 +12,12 @@ import pycountry
 # Setup and initialize APIs
 def initialize():
     load_dotenv()
+        
+    global perplexity_api
+    perplexity_api = os.getenv("PERPLEXITY_API_KEY")
 
     global weather_api_key
     weather_api_key = os.getenv("METEO_SOURCE_API")
-
-    # global news_api_key
-    # news_api_key = NewsApiClient(api_key=os.getenv("NEWS_API_KEY"))
-
-    # if not news_api_key:
-    #     raise ValueError("NEWS_API_KEY not found in .env file")
 
 # Convert lat/lon -> country code
 def get_country_code(latitude, longitude):
@@ -61,10 +58,37 @@ def lat_long_to_timezone(latitude, longitude):
     except Exception as e:
         return "Error: " + str(e)
 
-def get_news_for_location(latitude, longitude):
-    top_headlines = newsapi.get_top_headlines(language='en', country='us')
+def get_news_with_perplexity(latitude, longitude):
+    url = "https://api.perplexity.ai/chat/completions"
 
-    return top_headlines
+    payload = {
+        "model": "sonar",
+        "messages": [
+            {
+                "role": "user",
+                "content": f"What is the latest news near coordinates {latitude}, {longitude}? Provide only article titles and URLs. "
+                           f"I want news about politics, and economics."
+            }
+        ]
+    }
+
+    headers = {
+        "Authorization": f"Bearer {perplexity_api}",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(url, json=payload, headers=headers)
+    data = response.json()
+    formated_news = []
+
+    # Extract titles and URLs from search_results
+    if 'search_results' in data:
+        for result in data['search_results']:
+            title = result.get('title', 'No title')
+            url = result.get('url', 'No URL')
+            formated_news.append({"title": title, "url": url})
+        return formated_news
+    return "No news found."
 
 # Inputs the latitude and longitude and plugs that into the MeteoSource API to get the current weather for that location. 
 def get_weather_for_location(latitude, longitude, unit):
