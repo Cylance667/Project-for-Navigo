@@ -24,28 +24,6 @@ It includes a simple HTML front end with a map and pin, providing an intuitive w
 
 ---
 
-## Project Structure
-GeoInfoFinder/
-│
-├── backend/
-│ ├── app.py # Main Python backend (Flask or FastAPI)
-│ ├── services/
-│ │ ├── timezone.py # Time zone lookup logic
-│ │ ├── news.py # News API integration
-│ │ └── weather.py # Weather API integration
-│ └── requirements.txt # Python dependencies
-│
-├── frontend/
-│ ├── index.html # Main UI page
-│ ├── style.css # Styling for layout and map
-│ └── script.js # Handles map, user input, and API calls
-│
-├── README.md
-└── .env # API keys for weather/news services\
-
-
----
-
 ## Setup Instructions
 
 ### 1. Prerequisites
