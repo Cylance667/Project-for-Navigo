@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 import os
 from datetime import date, timedelta
 import json
-from newsapi import NewsApiClient
 import requests
 import pycountry
 
@@ -17,11 +16,11 @@ def initialize():
     global weather_api_key
     weather_api_key = os.getenv("METEO_SOURCE_API")
 
-    global news_api_key
-    news_api_key = NewsApiClient(api_key=os.getenv("NEWS_API_KEY"))
+    # global news_api_key
+    # news_api_key = NewsApiClient(api_key=os.getenv("NEWS_API_KEY"))
 
-    if not news_api_key:
-        raise ValueError("NEWS_API_KEY not found in .env file")
+    # if not news_api_key:
+    #     raise ValueError("NEWS_API_KEY not found in .env file")
 
 # Convert lat/lon -> country code
 def get_country_code(latitude, longitude):

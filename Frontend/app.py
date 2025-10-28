@@ -1,5 +1,10 @@
 from flask import Flask, render_template, request, jsonify
-import Backend.main as backend # your custom logic file
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Backend')))
+
+import main as backend
 
 app = Flask(__name__)
 
