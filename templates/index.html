@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Navigo Project</title>
+  <link rel="stylesheet" href="static/style.css" />
+  <script src="https://unpkg.com/globe.gl" defer></script>
+  <script src="static/script.js" defer></script>
+</head>
+<body>
+  <div id="main-container">
+    <div id="side-panel" class="hidden">
+      <h2>Pin Data</h2>
+      <div id="panel-content">
+        <p>Select or enter a location to view details.</p>
+      </div>
+      <button id="closePanel">Close</button>
+    </div>
+    
+    <div id="globe-container">
+      <div id="controls">
+        <input type="number" id="latInput" placeholder="Latitude (-90 to 90)">
+        <input type="number" id="lonInput" placeholder="Longitude (-180 to 180)">
+        <button id="addPinBtn">Add Pin</button>
+      </div>
+      <div id="globe"></div>
+    </div>
+  </div>
+
+  <div id="loading-overlay">
+    <div id="loading-message">Loading formatted geocoded file...</div>
+  </div>
+</body>
+</html>
