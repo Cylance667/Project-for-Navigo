@@ -27,7 +27,7 @@ It includes a simple HTML front end with a map and pin, providing an intuitive w
 ## Setup Instructions
 
 ### 1. Prerequisites
-- Python 3.10+
+- Python 3.13
 - pip (Python package manager)
 - API keys for:
   - [MeteoSource](https://www.meteosource.com/)
